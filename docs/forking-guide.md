@@ -1,29 +1,29 @@
 # Responsive QA Runner Forking Guide
 
-Use this guide to adapt the demo without introducing private data or hidden dependencies.
+Use this guide to adapt the utility without introducing private data or hidden dependencies.
 
 ## Public-Safe Sample Scenario
 
 - Service line: Website QA and polish
-- Demo promise: Run a simulated visual QA pass with breakpoints, defects, reproduction steps, and acceptance checks.
-- Fictional sample object: QA defect board
-- Runtime: static React/Vite, no backend, no auth, no external API calls
+- Demo promise: Generate a responsive QA report with screenshots, issue checks, and client-readable next steps.
+- Fictional sample object: CLI report output
+- Runtime: static React/Vite app plus local Playwright CLI; no backend, auth, or external service calls
 
 ## Replace First
 
-1. Edit `src/data.ts` titles, owners, notes, dates, theme colors, repository URL, and live demo URL.
-2. Keep owners generic such as `Fox & Hen`, `Buyer`, `QA`, or fictional roles.
-3. Keep notes written as sanitized examples; do not paste customer logs, emails, credentials, invoices, or screenshots.
-4. Refresh `docs/demo-screenshot.png` after visual changes.
+1. Edit `src/data/sampleReport.ts` with fictional target URLs, findings, selectors, dates, and viewport results.
+2. Keep owners and notes generic; do not paste customer logs, emails, credentials, invoices, or screenshots.
+3. Run `node bin/qa-runner.mjs <url> --out reports/example --viewports mobile,tablet,desktop` for local QA artifacts.
+4. Refresh `docs/demo-screenshot.png` only with sanitized public-safe imagery.
 
 ## Buyer Credibility Checklist
 
-- The hero states the service outcome in one sentence.
-- The board can be searched, sorted, edited, advanced, simulated, and exported.
-- QA gates explain what makes the package handoff-ready.
-- The generated report is readable by a non-technical buyer.
-- `npm run build --silent` passes before deploy.
+- The hero states that this is a responsive QA report viewer and CLI utility.
+- The CLI writes JSON + HTML reports and screenshots when Playwright can launch.
+- The sample dashboard explains issue severity, viewport evidence, and recommended fixes.
+- Browser limitations are visible when Playwright browsers are unavailable.
+- `npm test`, `npm run typecheck`, and `npm run build` pass before deploy.
 
 ## Starter Adaptation Brief
 
-Fork Responsive QA Runner as a public-safe client demo for website qa and polish. Keep all records fictional, update `src/data.ts`, preserve the readiness board and export flow, and publish only after the build passes.
+Fork Responsive QA Runner as a public-safe website QA utility. Keep all report data fictional, update `src/data/sampleReport.ts`, preserve the CLI report-generation flow, and publish only after tests and build pass.

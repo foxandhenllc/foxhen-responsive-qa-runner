@@ -2,24 +2,30 @@
   "name": "foxhen-responsive-qa-runner",
   "version": "0.2.0",
   "type": "module",
+  "bin": {
+    "foxhen-qa-runner": "./bin/qa-runner.mjs"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -b --noEmit"
+    "typecheck": "tsc -b --noEmit",
+    "test": "node --test tests/*.test.mjs",
+    "qa:example": "node bin/qa-runner.mjs tests/fixtures/qa-page.html --out reports/example --viewports mobile,tablet,desktop"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "4.3.4",
-    "vite": "5.4.14",
-    "typescript": "5.7.3",
+    "@vitejs/plugin-react": "6.0.2",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "typescript": "5.7.3",
+    "vite": "8.0.13"
   },
   "devDependencies": {
     "@types/react": "18.3.12",
-    "@types/react-dom": "18.3.1"
+    "@types/react-dom": "18.3.1",
+    "playwright": "^1.60.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20.19.0"
   }
 }

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Responsive QA Fixture</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        color: #18202f;
+        background: #ffffff;
+      }
+
+      main {
+        padding: 24px;
+      }
+
+      .wide-panel {
+        width: 128vw;
+        padding: 24px;
+        background: #ecf8fb;
+      }
+
+      .low-contrast {
+        color: #9ba0aa;
+        background: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Fixture homepage</h1>
+      <h3>Skipped heading level</h3>
+      <p class="low-contrast">This fixture intentionally has contrast and responsive QA problems.</p>
+      <div class="wide-panel">This panel intentionally overflows the mobile viewport.</div>
+      <img src="./missing-image.png" />
+      <a href="#missing-anchor">Missing anchor</a>
+      <a href="./missing-page.html">Missing local page</a>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+import type { ResponsiveQaReport } from "../lib/reportTypes";
+
+export const sampleReport = {
+  schemaVersion: "1.0.0",
+  generatedAt: "2026-05-20T14:30:00.000Z",
+  title: "Fox & Hen responsive QA sample report",
+  target: {
+    url: "https://example.test/fictional-homepage",
+  },
+  summary: {
+    status: "fail",
+    checkedViewports: 3,
+    totalIssues: 7,
+    errorCount: 1,
+    warningCount: 5,
+    infoCount: 1,
+  },
+  metadata: {
+    runner: "foxhen-responsive-qa-runner",
+    outputDirectory: "reports/example",
+    browser: {
+      status: "available",
+    },
+    checks: ["horizontal-overflow", "missing-alt", "heading-order", "broken-link", "contrast"],
+  },
+  viewports: [
+    {
+      name: "mobile",
+      width: 390,
+      height: 844,
+      screenshot: null,
+      screenshotStatus: "sample-only",
+      checks: {
+        overflow: {
+          status: "fail",
+          viewportWidth: 390,
+          scrollWidth: 512,
+          flaggedElements: 2,
+        },
+        contrast: {
+          status: "warn",
+          checkedElements: 36,
+          violations: 2,
+        },
+      },
+    },
+    {
+      name: "tablet",
+      width: 768,
+      height: 1024,
+      screenshot: null,
+      screenshotStatus: "sample-only",
+      checks: {
+        overflow: {
+          status: "pass",
+          viewportWidth: 768,
+          scrollWidth: 768,
+          flaggedElements: 0,
+        },
+        contrast: {
+          status: "warn",
+          checkedElements: 42,
+          violations: 1,
+        },
+      },
+    },
+    {
+      name: "desktop",
+      width: 1440,
+      height: 1000,
+      screenshot: null,
+      screenshotStatus: "sample-only",
+      checks: {
+        overflow: {
+          status: "pass",
+          viewportWidth: 1440,
+          scrollWidth: 1440,
+          flaggedElements: 0,
+        },
+        contrast: {
+          status: "pass",
+          checkedElements: 45,
+          violations: 0,
+        },
+      },
+    },
+  ],
+  issues: [
+    {
+      id: "horizontal-overflow-mobile",
+      check: "horizontal-overflow",
+      severity: "error",
+      viewport: "mobile",
+      selector: ".feature-rail",
+      message: "Document scroll width is 512px in a 390px viewport.",
+      help: "Review fixed-width cards, 100vw sections with padding, and horizontal feature rails before client handoff.",
+      evidence: [
+        { selector: ".feature-rail", right: 512, width: 480 },
+        { selector: ".pricing-table", right: 428, width: 408 },
+      ],
+    },
+    {
+      id: "missing-alt-hero-image",
+      check: "missing-alt",
+      severity: "warning",
+      viewport: "all",
+      selector: "main img.hero-photo",
+      message: "Image is missing useful alt text.",
+      help: "Describe the meaningful image content or mark it decorative with alt=\"\" if it adds no information.",
+    },
+    {
+      id: "heading-order-skip",
+      check: "heading-order",
+      severity: "warning",
+      viewport: "all",
+      selector: "section.testimonials h4",
+      message: "Heading jumps from h2 to h4: “What buyers noticed”.",
+      help: "Use a nested h3 or adjust surrounding heading levels so assistive technology users can scan the page.",
+    },
+    {
+      id: "broken-link-case-study",
+      check: "broken-link",
+      severity: "warning",
+      viewport: "all",
+      selector: "a[href='/case-studies/spring-launch']",
+      message: "Local route returned HTTP 404.",
+      help: "Update the case study URL, hide the link until launch, or document why it is expected to be unavailable.",
+    },
+    {
+      id: "contrast-mobile-subtitle",
+      check: "contrast",
+      severity: "warning",
+      viewport: "mobile",
+      selector: ".hero-subtitle",
+      message: "Text contrast ratio 3.4:1 is below 4.5:1.",
+      help: "Darken the subtitle color or simplify the background image overlay on mobile.",
+    },
+    {
+      id: "contrast-tablet-secondary-cta",
+      check: "contrast",
+      severity: "warning",
+      viewport: "tablet",
+      selector: ".secondary-cta",
+      message: "Text contrast ratio 3.8:1 is below 4.5:1.",
+      help: "Increase CTA text contrast against the pale brand surface.",
+    },
+    {
+      id: "multiple-h1",
+      check: "heading-order",
+      severity: "info",
+      viewport: "all",
+      selector: "article h1",
+      message: "The page has 2 h1 headings.",
+      help: "Multiple h1 elements can be valid, but this should be intentional in a client-facing report.",
+    },
+  ],
+} satisfies ResponsiveQaReport;

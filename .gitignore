@@ -1,5 +1,7 @@
 node_modules
 dist
+reports
+*.tsbuildinfo
 .DS_Store
 .vercel
 .env*
