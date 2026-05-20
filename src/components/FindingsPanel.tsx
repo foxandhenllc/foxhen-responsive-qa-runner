@@ -6,7 +6,7 @@ type FindingFilter = IssueSeverity | "all";
 type FindingsPanelProps = {
   issues: ReportIssue[];
   filter: FindingFilter;
-  selectedIssue: ReportIssue;
+  selectedIssue?: ReportIssue;
   onFilterChange: (filter: FindingFilter) => void;
   onSelectIssue: (issueId: string) => void;
 };
@@ -34,44 +34,60 @@ export function FindingsPanel({ issues, filter, selectedIssue, onFilterChange, o
           ))}
         </div>
         <div className="issue-stack">
-          {issues.map((issue) => (
-            <button
-              key={issue.id}
-              type="button"
-              className={issue.id === selectedIssue.id ? "issue-card selected" : "issue-card"}
-              onClick={() => onSelectIssue(issue.id)}
-            >
-              <span className={`severity ${issue.severity}`}>{severityLabel(issue.severity)}</span>
-              <strong>{issue.message}</strong>
-              <small>
-                {formatCheckLabel(issue.check)} · {issue.viewport}
-              </small>
-            </button>
-          ))}
+          {issues.length > 0 ? (
+            issues.map((issue) => (
+              <button
+                key={issue.id}
+                type="button"
+                className={issue.id === selectedIssue?.id ? "issue-card selected" : "issue-card"}
+                onClick={() => onSelectIssue(issue.id)}
+              >
+                <span className={`severity ${issue.severity}`}>{severityLabel(issue.severity)}</span>
+                <strong>{issue.message}</strong>
+                <small>
+                  {formatCheckLabel(issue.check)} · {issue.viewport}
+                </small>
+              </button>
+            ))
+          ) : (
+            <div className="empty-state">
+              <strong>No findings match this filter.</strong>
+              <p>Switch filters or load a report with issues to review detailed fix guidance.</p>
+            </div>
+          )}
         </div>
       </div>
       <aside className="issue-detail" aria-label="Selected finding detail">
-        <span className={`severity ${selectedIssue.severity}`}>{selectedIssue.severity}</span>
-        <h3>{formatCheckLabel(selectedIssue.check)}</h3>
-        <p className="issue-message">{selectedIssue.message}</p>
-        {selectedIssue.selector ? (
-          <div className="selector-chip">
-            <span>Selector</span>
-            <code>{selectedIssue.selector}</code>
+        {selectedIssue ? (
+          <>
+            <span className={`severity ${selectedIssue.severity}`}>{selectedIssue.severity}</span>
+            <h3>{formatCheckLabel(selectedIssue.check)}</h3>
+            <p className="issue-message">{selectedIssue.message}</p>
+            {selectedIssue.selector ? (
+              <div className="selector-chip">
+                <span>Selector</span>
+                <code>{selectedIssue.selector}</code>
+              </div>
+            ) : null}
+            <div className="repair-note">
+              <span>Recommended fix</span>
+              <p>{selectedIssue.help}</p>
+            </div>
+            {selectedIssue.evidence?.length ? (
+              <div className="evidence-list">
+                <span>Evidence</span>
+                {selectedIssue.evidence.map((item) => (
+                  <code key={JSON.stringify(item)}>{JSON.stringify(item)}</code>
+                ))}
+              </div>
+            ) : null}
+          </>
+        ) : (
+          <div className="empty-state detail-empty">
+            <strong>No selected finding.</strong>
+            <p>This report has no issues in the current filter.</p>
           </div>
-        ) : null}
-        <div className="repair-note">
-          <span>Recommended fix</span>
-          <p>{selectedIssue.help}</p>
-        </div>
-        {selectedIssue.evidence?.length ? (
-          <div className="evidence-list">
-            <span>Evidence</span>
-            {selectedIssue.evidence.map((item) => (
-              <code key={JSON.stringify(item)}>{JSON.stringify(item)}</code>
-            ))}
-          </div>
-        ) : null}
+        )}
       </aside>
     </section>
   );

@@ -7,9 +7,18 @@ export type BrowserStatus = {
   limitation?: string;
 };
 
+export type ReportCheck =
+  | "horizontal-overflow"
+  | "missing-alt"
+  | "heading-order"
+  | "broken-link"
+  | "contrast"
+  | "browser"
+  | (string & {});
+
 export type ReportIssue = {
   id: string;
-  check: "horizontal-overflow" | "missing-alt" | "heading-order" | "broken-link" | "contrast" | "browser";
+  check: ReportCheck;
   severity: IssueSeverity;
   viewport: string;
   selector?: string;

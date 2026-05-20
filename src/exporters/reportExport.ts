@@ -19,12 +19,14 @@ export function buildClientBrief(report: ResponsiveQaReport): string {
   ].join("\n");
 }
 
-export function downloadReportJson(report: ResponsiveQaReport): void {
+export function downloadReportJson(report: ResponsiveQaReport, filename = "foxhen-responsive-qa-report.json"): void {
   const payload = JSON.stringify(report, null, 2);
   const url = URL.createObjectURL(new Blob([payload], { type: "application/json" }));
   const link = document.createElement("a");
   link.href = url;
-  link.download = "foxhen-responsive-qa-sample-report.json";
+  link.download = filename;
+  document.body.append(link);
   link.click();
-  URL.revokeObjectURL(url);
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 0);
 }

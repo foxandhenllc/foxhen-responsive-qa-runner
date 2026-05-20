@@ -9,7 +9,7 @@ Public-safe Fox & Hen utility for responsive website QA. The repo stays intentio
 - Captures responsive evidence for `mobile`, `tablet`, `desktop`, or custom `WIDTHxHEIGHT` viewports.
 - Checks horizontal overflow, missing image alt text, heading order basics, broken links where possible, and browser-computed contrast basics when Playwright can launch.
 - Writes `report.json`, `index.html`, and screenshots into your chosen output folder.
-- Shows a polished static sample report viewer in the Vite app with no backend, auth, secrets, or real client data.
+- Shows a polished static report viewer in the Vite app with browser-only `report.json` file import or paste, no backend, auth, secrets, or real client data.
 
 ## CLI Usage
 
@@ -30,7 +30,7 @@ npm run qa:example
 
 If Playwright or its browser install is unavailable, the runner still attempts static HTML checks for local/file targets and writes a report with a clear browser limitation note. Screenshot, overflow, and computed contrast checks require a launched browser.
 
-## Live Sample Dashboard
+## Static Report Dashboard
 
 ```bash
 npm run dev
@@ -38,7 +38,7 @@ npm run typecheck
 npm run build
 ```
 
-The live app imports fixture report data from `src/data/sampleReport.ts` and renders it through organized components in `src/components`. It is a viewer/dashboard for sample CLI output, not a production monitoring service.
+The live app starts with fixture data from `src/data/sampleReport.ts`, then lets users load a local CLI-generated `report.json` by file picker or paste. The active report powers the summary, evidence, findings, JSON download, and copy-ready client brief. All parsing happens in the browser; the app does not upload reports or require accounts.
 
 ## Report Outputs
 
@@ -49,6 +49,13 @@ The CLI writes:
 - `screenshots/*.png` — full-page viewport screenshots when Playwright launches.
 
 Generated `reports/` output is gitignored by default.
+
+To review a generated report in the static app:
+
+1. Run `npm run dev`.
+2. Open the app in your browser.
+3. Use the import panel to choose `reports/example/report.json`, or paste the JSON file contents.
+4. Use `Download active JSON`, `Copy client brief`, or `Use sample data` as needed.
 
 ## Client Customization
 

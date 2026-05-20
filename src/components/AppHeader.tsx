@@ -15,6 +15,7 @@ export function AppHeader({ report }: AppHeaderProps) {
         </span>
       </a>
       <nav aria-label="Report sections">
+        <a href="#import">Import</a>
         <a href="#summary">Summary</a>
         <a href="#evidence">Evidence</a>
         <a href="#findings">Findings</a>
