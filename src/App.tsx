@@ -42,9 +42,16 @@ export function App() {
   async function copyClientBrief() {
     const brief = buildClientBrief(activeReport);
     if (navigator.clipboard) {
-      await navigator.clipboard.writeText(brief);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1800);
+      try {
+        await navigator.clipboard.writeText(brief);
+        setCopied(true);
+        window.setTimeout(() => setCopied(false), 1800);
+      } catch (error) {
+        setImportStatus({
+          tone: "error",
+          message: `Clipboard access was blocked: ${error instanceof Error ? error.message : String(error)}`,
+        });
+      }
       return;
     }
 
@@ -133,7 +140,7 @@ export function App() {
             </dl>
             <div className="top-findings">
               {priorityFindings.length > 0 ? (
-                priorityFindings.map((issue) => <span key={issue.id}>{issue.message}</span>)
+                priorityFindings.slice(0, 3).map((issue) => <span key={issue.id}>{issue.message}</span>)
               ) : (
                 <span>No priority findings in this report.</span>
               )}

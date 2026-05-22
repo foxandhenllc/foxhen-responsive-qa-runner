@@ -122,11 +122,11 @@ main {
 
 .hero {
   display: grid;
-  min-height: 760px;
+  min-height: 680px;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.52fr);
   gap: clamp(2rem, 6vw, 5.5rem);
   align-items: center;
-  padding: 8rem 0 4rem;
+  padding: 6.5rem 0 3.25rem;
 }
 
 .eyebrow {
@@ -141,9 +141,10 @@ main {
 h1 {
   max-width: 860px;
   margin-bottom: 1.3rem;
-  font-size: clamp(3.4rem, 8vw, 7.4rem);
+  font-size: clamp(3.3rem, 7.3vw, 6.65rem);
   line-height: 0.88;
-  letter-spacing: -0.085em;
+  letter-spacing: -0.045em;
+  word-spacing: 0.06em;
 }
 
 .lede {
@@ -217,7 +218,7 @@ h1 {
 .hero-console {
   position: relative;
   overflow: hidden;
-  min-height: 460px;
+  min-height: 0;
   padding: clamp(1.3rem, 3vw, 2rem);
   border-radius: 2.4rem;
 }
@@ -278,7 +279,8 @@ h1 {
   margin-top: 1.6rem;
   font-size: clamp(6rem, 12vw, 10rem);
   line-height: 0.8;
-  letter-spacing: -0.12em;
+  letter-spacing: -0.055em;
+  word-spacing: 0.04em;
 }
 
 .hero-console > p {
@@ -501,7 +503,8 @@ h2 {
   margin-bottom: 0;
   font-size: clamp(2.1rem, 4.4vw, 4rem);
   line-height: 0.95;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.04em;
+  word-spacing: 0.04em;
 }
 
 .viewport-grid {
