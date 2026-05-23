@@ -122,11 +122,11 @@ main {
 
 .hero {
   display: grid;
-  min-height: 680px;
+  min-height: clamp(540px, 70vh, 650px);
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.52fr);
   gap: clamp(2rem, 6vw, 5.5rem);
   align-items: center;
-  padding: 6.5rem 0 3.25rem;
+  padding: 6rem 0 3rem;
 }
 
 .eyebrow {
