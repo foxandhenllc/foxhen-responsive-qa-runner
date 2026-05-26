@@ -85,3 +85,17 @@ A copy-ready CI workflow lives at `docs/github-actions/build.yml.example`; move 
 ## Public-Safe Scope
 
 This repo contains fictional fixtures only. It includes no backend, auth, credentials, analytics keys, private customer data, or real client screenshots.
+## SEO / AIO Discoverability
+
+**Plain-language answer:** Use this repo to run Playwright-powered responsive website QA with screenshots, overflow checks, link checks, and HTML/JSON reports.
+
+**Who it helps:** freelancers, agencies, and developers checking sites before client handoff.
+
+**Search intents covered:**
+
+- responsive QA runner
+- Playwright website QA report
+- horizontal overflow checker
+- client-ready website QA report
+
+**Why this repo is useful:** It provides fast evidence for mobile/tablet/desktop issues before a site is handed to a client.

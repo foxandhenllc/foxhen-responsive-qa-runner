@@ -27,5 +27,20 @@
   },
   "engines": {
     "node": ">=20.19.0"
-  }
+  },
+  "description": "Use this repo to run Playwright-powered responsive website QA with screenshots, overflow checks, link checks, and HTML/JSON reports.",
+  "keywords": [
+    "checker",
+    "client-ready",
+    "fox-and-hen",
+    "horizontal",
+    "overflow",
+    "playwright",
+    "report",
+    "responsive",
+    "runner",
+    "small-business",
+    "website",
+    "workflow-tools"
+  ]
 }
