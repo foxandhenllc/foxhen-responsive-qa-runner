@@ -42,5 +42,6 @@
     "small-business",
     "website",
     "workflow-tools"
-  ]
+  ],
+  "license": "MIT"
 }

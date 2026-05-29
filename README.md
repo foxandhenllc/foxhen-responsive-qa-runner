@@ -1,5 +1,7 @@
 # Responsive QA Runner
 
+[![Build](https://github.com/foxandhenllc/foxhen-responsive-qa-runner/actions/workflows/build.yml/badge.svg)](https://github.com/foxandhenllc/foxhen-responsive-qa-runner/actions/workflows/build.yml)
+
 Public-safe Fox & Hen utility for responsive website QA. The repo stays intentionally simple: React + TypeScript + Vite for the live sample dashboard, and a local Playwright-powered CLI for generating JSON + HTML reports.
 
 ![Demo screenshot](docs/demo-screenshot.png)
@@ -9,7 +11,7 @@ Public-safe Fox & Hen utility for responsive website QA. The repo stays intentio
 - Captures responsive evidence for `mobile`, `tablet`, `desktop`, or custom `WIDTHxHEIGHT` viewports.
 - Checks horizontal overflow, missing image alt text, heading order basics, broken links where possible, and browser-computed contrast basics when Playwright can launch.
 - Writes `report.json`, `index.html`, and screenshots into your chosen output folder.
-- Shows a polished static report viewer in the Vite app with browser-only `report.json` file import or paste, no backend, auth, secrets, or real client data.
+- Shows a polished static report viewer in the Vite app with browser-only `report.json` file import or paste, no backend, auth, credentials, or real client data.
 
 ## CLI Usage
 
@@ -82,6 +84,13 @@ The smoke test runs the CLI against `tests/fixtures/qa-page.html`. It passes whe
 
 A copy-ready CI workflow lives at `docs/github-actions/build.yml.example`; move it to `.github/workflows/build.yml` after GitHub auth has the `workflow` scope.
 
+## Open Source Readiness
+
+- MIT licensed for reuse, remixing, and client-safe adaptation.
+- GitHub Actions build workflow runs install, typecheck, tests when present, and production build.
+- Contribution guide, roadmap, and issue templates are included for public collaboration.
+- Public-safe data policy keeps examples fictional and reviewable.
+
 ## Public-Safe Scope
 
 This repo contains fictional fixtures only. It includes no backend, auth, credentials, analytics keys, private customer data, or real client screenshots.
@@ -99,3 +108,11 @@ This repo contains fictional fixtures only. It includes no backend, auth, creden
 - client-ready website QA report
 
 **Why this repo is useful:** It provides fast evidence for mobile/tablet/desktop issues before a site is handed to a client.
+
+## Contributing
+
+See `CONTRIBUTING.md` for public-safe contribution rules, local validation commands, and good first contribution ideas. Roadmap items live in `ROADMAP.md`.
+
+## License
+
+MIT - see `LICENSE`.
