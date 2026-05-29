@@ -82,7 +82,7 @@ npm run build
 
 The smoke test runs the CLI against `tests/fixtures/qa-page.html`. It passes whether Playwright browsers are installed or not, but records the browser limitation in the generated report when screenshots cannot be captured.
 
-A copy-ready CI workflow lives at `docs/github-actions/build.yml.example`; move it to `.github/workflows/build.yml` after GitHub auth has the `workflow` scope.
+The active GitHub Actions build workflow lives at `.github/workflows/build.yml`; `docs/github-actions/build.yml.example` remains as a reference for forks.
 
 ## Open Source Readiness
 
